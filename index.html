@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scrollytelling template</title>
+	<script src="https://unpkg.com/enter-view"></script>
+</head>
+<style type="text/css">
+body, html {
+	font-family:"Helvetica-Neue", sans-serif;
+	top:0;
+	left:0;
+	margin:0;
+	color:#1d1d1d;
+}
+#featured {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  overflow:none;
+}
+.aligner {
+	max-width:80%;
+}
+#featured .title{
+	text-align:center;
+	margin-top:5%;
+	width:100%;
+}
+.title h2 {
+	font-size:1em;
+	font-weight:400;
+}
+#featured img {
+  width:100%;
+}
+#scroll {
+  font-stretch:expanded;
+  text-align:center;
+  width:80%;
+  position:absolute;
+  bottom:10%;
+  font-size:6em;
+  color:#1d1d1d;
+  cursor:pointer;
+  transition:0.5s all ease-in-out;
+  line-height:0.5em;
+}
+#scroll:hover {
+  transform:scale(1.2);
+  transform-origin:50% 30%;
+}
+.section{
+  opacity:0;
+  width:90%;
+  height:auto;
+  padding:5%;
+  margin-bottom:0%;
+  padding-bottom:0%;
+  line-height:2em;
+  transform:translateY(5em);
+  transition:0.5s ease-in-out;
+  margin:auto;
+}
+.section img {
+	width:100%;
+}
+.entered {
+  transform:translateY(0em);
+  opacity:1;
+}
+.tableauPlaceholder {
+	height:50vh;
+}
+.scrollpost {
+	width:100%;
+	padding:0;
+	margin:0;
+	overflow-x:scroll;
+	overflow-y:hidden;
+	white-space:nowrap;
+}
+.scrollpost img {
+	width:65%;
+	display:inline-block;
+	margin:0% 4% 0% 0%;
+}
+.open {
+	position:relative;
+		text-align:center;
+	margin:auto;
+}
+.open:hover .overlay{
+	opacity:0.8;
+}
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity:0;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	cursor:pointer;
+	transition:0.5s ease-in-out;
+}
+.open img {
+	width:80%;
+}
+
+.overlay h2 {
+	color:white;
+	background-color:none;
+	margin:auto;
+}
+#final {
+	margin-bottom:5%;
+}
+.open a {
+	text-decoration:none;
+	background-color:none;
+	padding:2% 4%;
+	cursor:pointer;
+	border:0.05em solid white;
+	transition:0.5s ease-in-out;
+}
+.open a:hover {
+	background-color:white;
+}
+.open a:hover h2{
+	color:#1d1d1d;
+}
+@media screen and (max-width:767px){
+	#featured img {
+		margin-left:-50%;
+		bottom:0;
+		position:absolute;
+		width:200%;
+		z-index:0;
+	}
+	#featured .title {
+		z-index:1;
+	}
+	.scrollpost img {
+		width:70%;
+	}
+}
+</style>
+<body>
+
+<div id="featured">
+	<div class="aligner">
+		<div class="title">
+		<h1>NATIONAL GRID'S CASE FOR ADDITIONAL PIPED GAS INFRASTRUCTURE</h1>
+		<h2>by Megan Haughey</h2>
+		</div>
+	  	<img src="assets/featured/cover.png">
+	 	 <div id="scroll">&#xfe40;</div>	
+	</div>
+</div>
+<!-- Simple text intro -->
+<div class="section" id="first">
+	<h1>ABOUT THE QUESTION?</h1>
+	<p>National Grid is currently constructing extensive and invasive gas pipeline infrastructure in downstate NY. Their case for the necessity of this infrastructure is partially based on their internal <a href="https://ngridlongtermsolutions.com/" target="_blank">Long-Term Capacity Report.</a> Synapse Energy Economics conducted an <a href="https://www.synapse-energy.com/project/assessment-national-grids-long-term-capacity-report" target="_blank">assesment</a> of this report and found that not only are National Grid’s findings flawed - but - the incorporation of missing and miscalculated data forecasts excess capacity with existing infrastructure.  This contrast pulls Nationals Grid’s predictions of a supply gap into question. The following is an analysis of this contrast.</p>
+</div>
+
+<!-- About the data carousel -->
+<div class="section">
+	<!-- the scrolling post holder -->
+	<div class="scrollpost">
+		<img src="assets/about-the-data/1.png">
+		<img src="assets/about-the-data/2.png">
+	</div>
+</div>
+
+<div class="section">
+	<img src="assets/casestudy/image.png">
+</div>
+<div class="section" id="first">
+	<h1>DESIGN DAY IMPACTS PER GROWTH RATE</h1>
+	<p>The following demonstrates the variation between Nation Grid’s projected demand growth rates from 2020 to 2035 and Synapse Energies corrected projections.</p>
+</div>
+<div class="section">
+	<img src="assets/casestudy/image2.png">
+</div>
+<div class="section" id="first">
+	<h1>COSTS OF NO INFRASTRUCTURE RESPONSE</h1>
+	<p>The following demonstrates the variation between Nation Grid’s projected demand growth rates from 2020 to 2035 and Synapse Energies corrected projections.</p>
+</div>
+<div class="section">
+	<img src="assets/casestudy/image3.png">
+	<p>If we follow Synapse’s corrections of National Grids projections it demonstrates that a supply gap does not exists, in fact there is projects surplus with the existing infrastructure. National Grid has also overestimated to cost ramifications of a no infrastructure response by upwards of 40%.</p>
+</div>
+</body>
+<script type="text/javascript">
+
+scroll=document.querySelector('#scroll');
+setup = document.querySelector('#first');
+scroll.onclick=function() {
+    first.scrollIntoView({ 
+    behavior: 'smooth',
+    block: "start",
+  });
+};
+
+enterView({
+  selector: '.section',
+  enter: function(el) {
+    el.classList.add('entered');
+  },
+  exit: function(el) {
+    el.classList.remove('entered');
+  },
+  progress: function(el, progress) {
+
+  },
+  offset: 0.2, // enter at middle of viewport
+});
+
+</script>
+</html>
